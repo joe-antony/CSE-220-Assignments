@@ -7,7 +7,7 @@ CC = gcc
 CFLAGS  = -g -Wall -Wextra -Wshadow -Wdouble-promotion -Wformat=2 -Wundef -DDEBUG
 
 # the build target executable:
-TARGET = bit
+TARGET = BitManipulation
 
 all: $(TARGET)
 
