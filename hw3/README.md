@@ -7,9 +7,9 @@ Files: BitManipulation.c, BitManipulation (executable)
 
 ## Functions:
 1. int main(int argc, char* argv[])
-2. int GetBit(int num, int pos);
-3. int SetBit(int num, int pos);
-4. int ClearBit(int num, int pos);
+2. int GetBit(int num, int pos); // Return -1 on invalid input
+3. int SetBit(int num, int pos); // Return -1 on invalid input
+4. int ClearBit(int num, int pos); // Return -1 on invalid input
 5. int Reversbit(int num);
 6. int CountBit(int num);
 7. int PowerofTwo(unsigned int num);
@@ -44,7 +44,7 @@ Files: BitManipulation.c, BitManipulation (executable)
 
 2. int SetBit(int num, int pos);
 
-
+	//Test Cases
 
 3. int ClearBit(int num, int pos);
 
