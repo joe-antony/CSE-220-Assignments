@@ -1,4 +1,4 @@
-#include "global.h"
+#include "ceasar.h"
 
 int encrypt(const char *plaintext, char *ciphertext, int key){
     // TO BE IMPLEMENTED

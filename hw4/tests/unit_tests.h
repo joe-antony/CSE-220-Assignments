@@ -7,7 +7,7 @@
 #include <assert.h>
 #include "criterion/criterion.h"
 
-#include "global.h"
+#include "ceasar.h"
  
 #define TEST_INPUT_DIR "tests.in"
 #define TEST_OUTPUT_DIR "tests.out"
