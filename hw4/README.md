@@ -2,7 +2,7 @@
 Name: ________
 ID: ##########
 
-This is a program that encrypts/decrypts alphanumerical messages using the Ceasar Cipher Algorithm.
+This is a program that encrypts/decrypts alphanumerical messages using the Ceasar Cipher Algorithm. You can skip over/ ignore non alphanumeric characters.
 
 NOTE: All test cases are tested using Criterion. There is no main.c file. To test on your machine use:
 
