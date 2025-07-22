@@ -39,7 +39,7 @@ NOTE: All test cases are tested using Criterion. There is no main.c file. To tes
     
     Return Value:
 
- ## void updateCharacterInformation(int a, int *start, int *range) 
+ ## Your Helper function (arguments,...)
 
     Purpose:
   
