@@ -8,7 +8,6 @@ endif
 CC := gcc
 SRCD := src
 TSTD := tests
-AUXD := tests_aux
 BLDD := build
 BIND := bin
 INCD += -I include
@@ -18,12 +17,8 @@ ALL_OBJF := $(patsubst $(SRCD)/%,$(BLDD)/%,$(ALL_SRCF:.c=.o))
 FUNC_FILES := $(filter-out build/main.o, $(ALL_OBJF))
 TEST_SRC := $(shell find $(TSTD) -type f -name '*.c')
 TEST_OBJ := $(patsubst $(TSTD)/%,$(BLDD)/%,$(TEST_SRC:.c=.o))
-AUX_SRC := $(shell find $(AUXD) -type f -name '*.c')
 
 TEST := unit_tests
-
-AUX_OBJS := $(patsubst $(AUXD)/%,$(BLDD)/%,$(AUX_SRC:.c=.o))
-AUX_PGMS := $(patsubst $(AUXD)/%,$(BIND)/%,$(AUX_SRC:.c=))
 
 CFLAGS := -Wall -Wextra -Wshadow -Wdouble-promotion -Wformat=2 -Wundef -pedantic
 GCOV := -fprofile-arcs -ftest-coverage
@@ -43,7 +38,7 @@ OCLINT_REPORT := "oclint_report.html"
 GCOV_REPORT := "hw3.c.gcov"
 
 all:; @$(MAKE) _all -j
-_all: setup $(BIND)/$(TEST) $(AUX_PGMS) $(ALL_OBJF)
+_all: setup $(BIND)/$(TEST) $(ALL_OBJF)
 
 debug: CFLAGS += $(DFLAGS) $(PRINT_STATEMENTS) 
 debug: all
@@ -57,16 +52,10 @@ $(BLDD):
 $(BIND)/$(TEST): $(FUNC_FILES) $(TEST_OBJ)
 	$(CC) $(CFLAGS) $(INCD) $(FUNC_FILES) $(TEST_OBJ) $(TEST_LIB) $(LIBD) -o $@ $(LIBS)
 
-$(AUX_PGMS): % : $(AUX_OBJS) $(FUNC_FILES) 
-	$(CC) $(GCOV) $(BLDD)/$(@F).o $(FUNC_FILES) -o $@ $(LIBS)
-
-$(BLDD)/%.o: $(AUXD)/%.c
+$(BLDD)/%.o: $(SRCD)/%.c 
 	$(CC) $(CFLAGS) $(INCD) -c -o $@ $<
 
 $(BLDD)/%.o: $(TSTD)/%.c
-	$(CC) $(CFLAGS) $(INCD) -c -o $@ $<
-
-$(BLDD)/%.o: $(SRCD)/%.c 
 	$(CC) $(CFLAGS) $(INCD) -c -o $@ $<
 
 check:
