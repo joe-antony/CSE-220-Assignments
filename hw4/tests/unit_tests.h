@@ -1,3 +1,8 @@
+/* Siddharth Korukonda
+   CSE 220.01
+   115607752
+*/
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
@@ -7,7 +12,7 @@
 #include <assert.h>
 #include "criterion/criterion.h"
 
-#include "global.h"
+#include "ceasar.h"
  
 #define TEST_INPUT_DIR "tests.in"
 #define TEST_OUTPUT_DIR "tests.out"
