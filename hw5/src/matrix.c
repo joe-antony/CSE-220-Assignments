@@ -43,8 +43,7 @@ void freeMatrix(int n, int** M){
 int main(int argc, char* argv[]){
     (void)argc;
 	(void)argv;
-    
-    // Add your test cases here to validate the functionality of the implemented functions
+
     return 0;
 }
 #endif
