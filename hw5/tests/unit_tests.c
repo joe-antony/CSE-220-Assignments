@@ -59,8 +59,9 @@ Test(base_suite, SparseMatrix_full, .description="Full Sparse Matrix") {
     int** M = initializeMatrix(4, 2, (int[]){0,4,0,5,0,0,2,0});
     int** S_act = initializeMatrix(3, 4, (int[]){0,0,0,0,0,0,0,0,0,0,0,0});
     int** S_exp = initializeMatrix(3, 4, (int[]){0,1,3,0,1,1,0,0,4,5,2,0});
-    int D[2] = {4,2};
-    int ret_act = SparseMatrix(M, S_act, D);
+    int row = 4;
+    int col = 2;
+    int ret_act = SparseMatrix(row, col, M, S_act);
     int ret_exp = 3;
     cr_expect_eq(ret_act, ret_exp, "Return value was %d, but it should have been %d.\n", ret_act, ret_exp);
     cr_assert(areMatricesEqual(S_act, S_exp, 3, 4), "Contents of matrix incorrect. See unit_tests.c for expected values.");
@@ -73,7 +74,7 @@ Test(base_suite, addition_case_yes, .description="Matrices are compatible for ad
     int** A_act = initializeMatrix(3, 2, (int[]){0, 0, 0, 0, 0,0});
     int** A_exp = initializeMatrix(3, 2, (int[]){5, 6, 8, 5, 5,10});
     int D[6] = {3,2,3,2,3,2};
-    int ret_act = Addition(M, N, A_act, D);
+    int ret_act = Addition(D[0],D[1],D[2],D[3],D[4],D[5],M, N, A_act);
     int ret_exp = 1;
     cr_expect_eq(ret_act, ret_exp, "Return value was %d, but it should have been %d.\n", ret_act, ret_exp);
     cr_assert(areMatricesEqual(A_act, A_exp, 3, 2), "Contents of matrix incorrect. See unit_tests.c for expected values.");
@@ -86,7 +87,7 @@ Test(base_suite, addition_case_no, .description="Matrices are compatible for add
     int** A_act = initializeMatrix(3, 3, (int[]){5, 6, 0, 8, 5, 0, 5, 10, 0});
     int** A_exp = initializeMatrix(3, 3, (int[]){5, 6, 0, 8, 5, 0, 5, 10, 0});
     int D[6] = {3,2,3,2,3,3};
-    int ret_act = Addition(M, N, A_act, D);
+    int ret_act = Addition(D[0],D[1],D[2],D[3],D[4],D[5],M, N, A_act);
     int ret_exp = 2;
     cr_expect_eq(ret_act, ret_exp, "Return value was %d, but it should have been %d.\n", ret_act, ret_exp);
     cr_assert(areMatricesEqual(A_act, A_exp, 3, 3), "Contents of matrix incorrect. See unit_tests.c for expected values.");
@@ -99,7 +100,7 @@ Test(base_suite, addition_case_no_small, .description="Matrices are incompatible
     int** A_act = initializeMatrix(2, 2, (int[]){0, 0, 0, 0});
     int** A_exp = initializeMatrix(2, 2, (int[]){7, 9, 9, 8});
     int D[6] = {3,2,4,2,2,2};
-    int ret_act = Addition(M, N, A_act, D);
+    int ret_act = Addition(D[0],D[1],D[2],D[3],D[4],D[5],M, N, A_act);
     int ret_exp = -2;
     cr_expect_eq(ret_act, ret_exp, "Return value was %d, but it should have been %d.\n", ret_act, ret_exp);
     cr_assert(areMatricesEqual(A_act, A_exp, 2, 2), "Contents of matrix incorrect. See unit_tests.c for expected values.");
@@ -112,7 +113,7 @@ Test(base_suite, addition_case_no_big, .description="Matrices are incompatible f
     int** A_act = initializeMatrix(5, 2, (int[]){0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
     int** A_exp = initializeMatrix(5, 2, (int[]){7, 9, 9, 8, 9, 15, 0, 0, 0, 0});
     int D[6] = {3,2,4,2,5,2};
-    int ret_act = Addition(M, N, A_act, D);
+    int ret_act = Addition(D[0],D[1],D[2],D[3],D[4],D[5],M, N, A_act);
     int ret_exp = -1;
     cr_expect_eq(ret_act, ret_exp, "Return value was %d, but it should have been %d.\n", ret_act, ret_exp);
     cr_assert(areMatricesEqual(A_act, A_exp, 5, 2), "Contents of matrix incorrect. See unit_tests.c for expected values.");
@@ -125,7 +126,7 @@ Test(base_suite, addition_case_yes_small, .description="Matrices are compatible,
     int** A_act = initializeMatrix(2, 2, (int[]){0, 0, 0, 0});
     int** A_exp = initializeMatrix(2, 2, (int[]){5, 6, 8, 5});
     int D[6] = {3,2,3,2,2,2};
-    int ret_act = Addition(M, N, A_act, D);
+    int ret_act = Addition(D[0],D[1],D[2],D[3],D[4],D[5],M, N, A_act);
     int ret_exp = -3;
     cr_expect_eq(ret_act, ret_exp, "Return value was %d, but it should have been %d.\n", ret_act, ret_exp);
     cr_assert(areMatricesEqual(A_act, A_exp, 2, 2), "Contents of matrix incorrect. See unit_tests.c for expected values.");
@@ -138,7 +139,7 @@ Test(base_suite, multiplication_case_yes, .description="Matrices are compatible 
     int** A_act = initializeMatrix(3, 3, (int[]){0, 0, 0, 0, 0, 0, 0, 0, 0});
     int** A_exp = initializeMatrix(3, 3, (int[]){9, 13, 14, 19, 22, 21, 9, 13, 14});
     int D[6] = {3,2,2,3,3,3};
-    int ret_act = Multiplication(M, N, A_act, D);
+    int ret_act = Multiplication(D[0],D[1],D[2],D[3],D[4],D[5]M, N, A_act);
     int ret_exp = 1;
     cr_expect_eq(ret_act, ret_exp, "Return value was %d, but it should have been %d.\n", ret_act, ret_exp);
     cr_assert(areMatricesEqual(A_act, A_exp, 3, 3), "Contents of matrix incorrect. See unit_tests.c for expected values.");
@@ -151,7 +152,7 @@ Test(base_suite, multiplication_case_no_small, .description="Matrices are incomp
     int** A_act = initializeMatrix(2, 2, (int[]){0, 0, 0, 0});
     int** A_exp = initializeMatrix(2, 2, (int[]){27, 12, 43, 23});
     int D[6] = {3,2,3,2,2,2};
-    int ret_act = Multiplication(M, N, A_act, D);
+    int ret_act = Multiplication(D[0],D[1],D[2],D[3],D[4],D[5],M, N, A_act);
     int ret_exp = -2;
     cr_expect_eq(ret_act, ret_exp, "Return value was %d, but it should have been %d.\n", ret_act, ret_exp);
     cr_assert(areMatricesEqual(A_act, A_exp, 2, 2), "Contents of matrix incorrect. See unit_tests.c for expected values.");
@@ -164,7 +165,7 @@ Test(base_suite, multiplication_case_no_big, .description="Matrices are incompat
     int** A_act = initializeMatrix(4, 3, (int[]){0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
     int** A_exp = initializeMatrix(4, 3, (int[]){27,12,0,43,23,0,27,12,0,0,0,0});
     int D[6] = {3,2,3,2,4,3};
-    int ret_act = Multiplication(M, N, A_act, D);
+    int ret_act = Multiplication(D[0],D[1],D[2],D[3],D[4],D[5],M, N, A_act);
     int ret_exp = -1;
     cr_expect_eq(ret_act, ret_exp, "Return value was %d, but it should have been %d.\n", ret_act, ret_exp);
     cr_assert(areMatricesEqual(A_act, A_exp, 4, 3), "Contents of matrix incorrect. See unit_tests.c for expected values.");
@@ -177,7 +178,7 @@ Test(base_suite, multiplication_case_yes_big, .description="Matrices are compati
     int** A_act = initializeMatrix(4, 4, (int[]){0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0});
     int** A_exp = initializeMatrix(4, 4, (int[]){9,13,14,0,19,22,21,0,9,13,14,0,0, 0,0, 0});
     int D[6] = {3,2,2,3,4,4};
-    int ret_act = Multiplication(M, N, A_act, D);
+    int ret_act = Multiplication(D[0],D[1],D[2],D[3],D[4],D[5],M, N, A_act);
     int ret_exp = 2;
     cr_expect_eq(ret_act, ret_exp, "Return value was %d, but it should have been %d.\n", ret_act, ret_exp);
     cr_assert(areMatricesEqual(A_act, A_exp, 4, 4), "Contents of matrix incorrect. See unit_tests.c for expected values.");
@@ -190,7 +191,7 @@ Test(base_suite, multiplication_case_yes_incorrect, .description="Matrices are c
     int** A_act = initializeMatrix(2, 4, (int[]){0, 0, 0, 0, 0, 0, 0, 0});
     int** A_exp = initializeMatrix(2, 4, (int[]){9,13,14,0,19,22,21,0});    
     int D[6] = {3,2,2,3,2,4};
-    int ret_act = Multiplication(M, N, A_act, D);
+    int ret_act = Multiplication(D[0],D[1],D[2],D[3],D[4],D[5],M, N, A_act);
     int ret_exp = -3;
     cr_expect_eq(ret_act, ret_exp, "Return value was %d, but it should have been %d.\n", ret_act, ret_exp);
     cr_assert(areMatricesEqual(A_act, A_exp, 2, 4), "Contents of matrix incorrect. See unit_tests.c for expected values.");
@@ -202,7 +203,7 @@ Test(base_suite, transpose_case_yes, .description="Matrices are compatible for t
     int** A_act = initializeMatrix(2, 3, (int[]){0, 0, 0, 0, 0, 0});
     int** A_exp = initializeMatrix(2, 3, (int[]){9, 1, 9, 9, 2, 3});
     int D[4] = {3,2,2,3};
-    int ret_act = Transpose(M, A_act, D);
+    int ret_act = Transpose(D[0],D[1],D[2],D[3],M, A_act);
     int ret_exp = 1;
     cr_expect_eq(ret_act, ret_exp, "Return value was %d, but it should have been %d.\n", ret_act, ret_exp);
     cr_assert(areMatricesEqual(A_act, A_exp, 2, 3), "Contents of matrix incorrect. See unit_tests.c for expected values.");
@@ -214,7 +215,7 @@ Test(base_suite, transpose_case_no, .description="Matrices are incompatible for 
     int** A_act = initializeMatrix(3, 2, (int[]){0, 0, 0, 0, 0, 0});
     int** A_exp = initializeMatrix(3, 2, (int[]){9, 1, 9, 2, 0, 0});
     int D[4] = {3,2,3,2};
-    int ret_act = Transpose(M, A_act, D);
+    int ret_act = Transpose(D[0],D[1],D[2],D[3],M, A_act);
     int ret_exp = -1;
     cr_expect_eq(ret_act, ret_exp, "Return value was %d, but it should have been %d.\n", ret_act, ret_exp);
     cr_assert(areMatricesEqual(A_act, A_exp, 3, 2), "Contents of matrix incorrect. See unit_tests.c for expected values.");
@@ -226,7 +227,7 @@ Test(base_suite, transpose_case_no_big, .description="Matrices are incompatible 
     int** A_act = initializeMatrix(4, 4, (int[]){0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0});
     int** A_exp = initializeMatrix(4, 4, (int[]){9, 1, 9, 0, 9,2,3,0,0,0,0,0,0,0,0,0});
     int D[4] = {3,2,4,4};
-    int ret_act = Transpose(M, A_act, D);
+    int ret_act = Transpose(D[0],D[1],D[2],D[3],M, A_act);
     int ret_exp = 2;
     cr_expect_eq(ret_act, ret_exp, "Return value was %d, but it should have been %d.\n", ret_act, ret_exp);
     cr_assert(areMatricesEqual(A_act, A_exp, 4, 4), "Contents of matrix incorrect. See unit_tests.c for expected values.");
