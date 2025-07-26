@@ -5,17 +5,17 @@ ID: ##########
 # Submission folder structure:
 
 
-CSE220_{SBU ID#}_HW5-----
+CSE220_{SBU ID#}_HW5
 |
 |__matrix.c
 |__student_tests.c
 |__README.md
 
 ## Functions:
-1. int SparseMatrix(int** M, int** S, int* D)
-2. int Addition(int** M, int** N, int** A, int* D)
-3. int Multiplication(int** M, int** N, int** A, int* D)
-4. int Transpose(int** A, int** AT, int* D)
+1. int SparseMatrix(int row, int col, int** M, int** S)
+2. int Addition(int RM, int CM, int RN, int CN, int RA, int CA, int** M, int** N, int** A)
+3. int Multiplication(int RM, int CM, int RN, int CN, int RA, int CA, int** M, int** N, int** A)
+4. int Transpose(int RA, int RC, int RAT, int CAT, int** A, int** AT)
 
 
 # Guidelines:
