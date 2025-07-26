@@ -6,7 +6,7 @@
 #include <ctype.h>
 #include <unistd.h>
 
-int SparseMatrix(int** M, int** S, int* D);
-int Addition(int** M, int** N, int** A, int* D);
-int Multiplication(int** M, int** N, int** A, int* D);
-int Transpose(int** A, int** AT, int* D);
+int SparseMatrix(int row, int col, int** M, int** S);
+int Addition(int RM, int CM, int RN, int CN, int RA, int CA, int** M, int** N, int** A);
+int Multiplication(int RM, int CM, int RN, int CN, int RA, int CA, int** M, int** N, int** A);
+int Transpose(int RA, int RC, int RAT, int CAT, int** A, int** AT);
