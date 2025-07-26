@@ -139,7 +139,7 @@ Test(base_suite, multiplication_case_yes, .description="Matrices are compatible 
     int** A_act = initializeMatrix(3, 3, (int[]){0, 0, 0, 0, 0, 0, 0, 0, 0});
     int** A_exp = initializeMatrix(3, 3, (int[]){9, 13, 14, 19, 22, 21, 9, 13, 14});
     int D[6] = {3,2,2,3,3,3};
-    int ret_act = Multiplication(D[0],D[1],D[2],D[3],D[4],D[5]M, N, A_act);
+    int ret_act = Multiplication(D[0],D[1],D[2],D[3],D[4],D[5],M, N, A_act);
     int ret_exp = 1;
     cr_expect_eq(ret_act, ret_exp, "Return value was %d, but it should have been %d.\n", ret_act, ret_exp);
     cr_assert(areMatricesEqual(A_act, A_exp, 3, 3), "Contents of matrix incorrect. See unit_tests.c for expected values.");
