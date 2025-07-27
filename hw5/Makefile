@@ -50,14 +50,16 @@ $(BIND):
 $(BLDD):
 	mkdir -p $(BLDD)
 
+SRC_CFLAGS := $(CFLAGS) -DSTUDENT_MAIN
+
 $(BIND)/$(TEST): $(FUNC_FILES) $(TEST_OBJ)
-	$(CC) $(CFLAGS) $(INCD) $(FUNC_FILES) $(TEST_OBJ) $(TEST_LIB) $(LIBD) -o $@ $(LIBS)
+	$(CC) $(SRC_CFLAGS) $(INCD) $(FUNC_FILES) $(TEST_OBJ) $(TEST_LIB) $(LIBD) -o $@ $(LIBS)
 
 $(BLDD)/%.o: $(TSTD)/%.c
 	$(CC) $(CFLAGS) $(INCD) -c -o $@ $<
 
 $(BLDD)/%.o: $(SRCD)/%.c 
-	$(CC) $(CFLAGS) $(INCD) -c -o $@ $<
+	$(CC) $(SRC_CFLAGS) $(INCD) -c -o $@ $<
 
 check:
 	oclint -report-type html -o oclint_report.html -rc SHORT_VARIABLE_NAME=1 -rc LONG_LINE=120--enable-clang-static-analyzer $(ALL_SRCF) -- $(INCD) -DNDEBUG
