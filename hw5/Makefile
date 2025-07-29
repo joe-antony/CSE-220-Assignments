@@ -20,6 +20,7 @@ TEST_OBJ := $(patsubst $(TSTD)/%,$(BLDD)/%,$(TEST_SRC:.c=.o))
 
 TEST := unit_tests
 
+
 CFLAGS := -Wall -Wextra -Wshadow -Wdouble-promotion -Wformat=2 -Wundef -pedantic
 GCOV := -fprofile-arcs -ftest-coverage
 DFLAGS := -g -DDEBUG
@@ -35,7 +36,7 @@ CFLAGS += $(DFLAGS)
 
 TEST_RESULTS := "test_results.json"
 OCLINT_REPORT := "oclint_report.html"
-GCOV_REPORT := "hw3.c.gcov"
+GCOV_REPORT := "matrix.c.gcov"
 
 all:; @$(MAKE) _all -j
 _all: setup $(BIND)/$(TEST) $(ALL_OBJF)
@@ -49,14 +50,16 @@ $(BIND):
 $(BLDD):
 	mkdir -p $(BLDD)
 
-$(BIND)/$(TEST): $(FUNC_FILES) $(TEST_OBJ)
-	$(CC) $(CFLAGS) $(INCD) $(FUNC_FILES) $(TEST_OBJ) $(TEST_LIB) $(LIBD) -o $@ $(LIBS)
+SRC_CFLAGS := $(CFLAGS) -DSTUDENT_MAIN
 
-$(BLDD)/%.o: $(SRCD)/%.c 
-	$(CC) $(CFLAGS) $(INCD) -c -o $@ $<
+$(BIND)/$(TEST): $(FUNC_FILES) $(TEST_OBJ)
+	$(CC) $(SRC_CFLAGS) $(INCD) $(FUNC_FILES) $(TEST_OBJ) $(TEST_LIB) $(LIBD) -o $@ $(LIBS)
 
 $(BLDD)/%.o: $(TSTD)/%.c
 	$(CC) $(CFLAGS) $(INCD) -c -o $@ $<
+
+$(BLDD)/%.o: $(SRCD)/%.c 
+	$(CC) $(SRC_CFLAGS) $(INCD) -c -o $@ $<
 
 check:
 	oclint -report-type html -o oclint_report.html -rc SHORT_VARIABLE_NAME=1 -rc LONG_LINE=120--enable-clang-static-analyzer $(ALL_SRCF) -- $(INCD) -DNDEBUG
@@ -68,10 +71,10 @@ test:
 	@$(BIND)/$(TEST) -j1 --full-stats --verbose --json=$(TEST_RESULTS)
 
 gcov:
-	@gcov ceasar.o -o build -s src > /dev/null 2>&1
-	@echo Generated unit test coverage report for ceasar.c. See $(GCOV_REPORT)
-
+	@gcov matrix.o -o build -s src > /dev/null 2>&1
+	@echo Generated unit test coverage report for matrix.c. See $(GCOV_REPORT)
+	
 clean:
-	rm -fr $(BLDD) $(BIND) $(TSTD).out $(AUXD)/*.o *.out $(OCLINT_REPORT) $(GCOV_REPORT) $(TEST_RESULTS)
+	rm -fr $(BLDD) $(BIND) $(TSTD).out *.out $(OCLINT_REPORT) $(GCOV_REPORT) $(TEST_RESULTS)
 
 .PHONY: all clean debug setup test

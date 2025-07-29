@@ -2,7 +2,7 @@
 Name: Siddharth Korukonda
 ID: 115607752
 
-This is a program that encrypts/decrypts alphanumerical messages using the Ceasar Cipher Algorithm.
+This is a program that encrypts/decrypts alphanumerical messages using the Ceasar Cipher Algorithm. You can skip over/ ignore non alphanumeric characters.
 
 NOTE: All test cases are tested using Criterion. There is no main.c file. To test on your machine use:
 
@@ -82,6 +82,14 @@ NOTE: All test cases are tested using Criterion. There is no main.c file. To tes
             - The return value is the number of successful decryptions
             - Spaces are successfully passed from ciphertext to plaintext but are not counted in the return value
 
+<<<<<<< HEAD
+=======
+ ## Your Helper function (arguments,...)
+
+    Purpose:
+  
+    Parameters:
+>>>>>>> upstream/main
 
 # Test Cases
 
