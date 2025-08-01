@@ -134,7 +134,7 @@ int Addition(int RM, int CM, int RN, int CN, int RA, int CA, int** M, int** N, i
     }
 
     /* Edge case to see if the matrix rows are allocated properly. This conditional checks if memory for the rows of matrix M is allocated properly, and if not, 
-       the return value is -1. This indicates a structural error, and will return the custom error that I've assigned for structural errors in the matrices. 
+       the return value is -4. This indicates a structural error, and will return the custom error that I've assigned for structural errors in the matrices. 
        This custom error seperates all edge cases and makes debugging easier. Check README.MD file for more information. This loop iterates through each of the
        rows in matrix M
     */
@@ -274,7 +274,7 @@ int Addition(int RM, int CM, int RN, int CN, int RA, int CA, int** M, int** N, i
             }
         }
         
-        // Indicates that the full sum obtained by matrix addition being performed on the overlapping region is stored
+        // Indicates that the full sum matrix obtained by matrix addition being performed on the overlapping region is stored
         return -1;
 
     }
@@ -333,7 +333,7 @@ int Multiplication(int RM, int CM, int RN, int CN, int RA, int CA, int** M, int*
     }
 
     /* Edge case to see if the matrix rows are allocated properly. This conditional checks if memory for the rows of matrix M is allocated properly, and if not, 
-       the return value is -1. This indicates a structural error, and will return the custom error that I've assigned for structural errors in the matrices. 
+       the return value is -4. This indicates a structural error, and will return the custom error that I've assigned for structural errors in the matrices. 
        This custom error seperates all edge cases and makes debugging easier. Check README.MD file for more information. This loop iterates through each of the
        rows in matrix M
     */
@@ -460,9 +460,7 @@ int Multiplication(int RM, int CM, int RN, int CN, int RA, int CA, int** M, int*
 
     /* This portion of the code checks the second case for matrix multiplication: the row count of matrix N doesn't match the column count of matrix M. In this 
        case, the function should only multiply the values in the overlapping region. Therefore, we need to find the minimum value of the shared dimension 
-       between 
-    matrices M and N because the size of the smaller matrix is less than the size of the larger matrix, so the smaller matrix is bound to fit inside the larger
-       matrix, indicating overlap.
+       between matrices M and N so that we don't exceed the bounds of the smaller matrix while performing matrix multiplication
     */
     int overlap = 0;
     if (CM < RN) {
@@ -471,101 +469,181 @@ int Multiplication(int RM, int CM, int RN, int CN, int RA, int CA, int** M, int*
         overlap = RN;
     }
 
+    /* This is a subcase to check if matrix A is big enough to store the full matrix multiplication of the overlapped section of the matrices. The conditional 
+       first checks if matrix A is larger than the original row count of M and column count of N, which guarantees that matrix A will be larger than the matrix
+       formed with the shared dimension between matrices M and N, and then the next two loops are used to iterate through each value of matrix A and compute the
+       product using the values at the exact same positions in matrices M and N
+    */
     if (RA >= RM && CA >= CN) {
-        for (int i = 0; i < RM; i++) {
-            for (int j = 0; j < CN; j++) {
-                int sum = 0;
-                for (int k = 0; k < overlap; k++) {
-                    sum += *(*(M + i) + k) * *(*(N + k) + j);
+        for (int i=0; i<RM; i++) {
+            for (int j=0; j<CN; j++) {
+                // This variable initializes the dot product result for the ith row of M and the jth column of N, which will iterate over the shared dimension
+                int dot = 0;
+
+                // This for loop iterates over the overlapping shared dimension between matrices M and N in order to compute the dot product
+                for (int k=0; k<overlap; k++) {
+                    dot += *(*(M+i)+k) * *(*(N+k)+j);
                 }
-                *(*(A + i) + j) = sum;
+
+                // Stores the dot product in the designated spot in matrix A
+                *(*(A+i)+j) = dot;
             }
         }
-        return -1; // Intersection product fits
+
+        // Indicates that the full product matrix obtained by performing matrix multiplication on the maximum shared dimension has been stored
+        return -1;
     }
 
-    int partialRows = 0; // Compute rows that fit
+    /* Checks the subcase where matrix A is too small. This means we need to store as much as possible. Therefore, we choose the minimum value of the row or
+       column between matrix M or matrix A so that we store the maximum number of values that we can use for matrix multiplication on the overlapping region 
+       without going overboard. This first of two sets of conditionals sets the row count needed for limited size overlapped shared dimension matrix multiplication
+    */
+    int partialRows = 0;
     if (RA < RM) {
         partialRows = RA;
     } else {
         partialRows = RM;
     }
 
-    int partialCols = 0; // Compute cols that fit
+    // This next set of conditionals (second of two) sets the column count needed for limited size overlapped shared dimension matrix multiplication
+    int partialCols = 0;
     if (CA < CN) {
         partialCols = CA;
     } else {
         partialCols = CN;
     }
 
-    for (int i = 0; i < partialRows; i++) {
-        for (int j = 0; j < partialCols; j++) {
-            int sum = 0;
-            for (int k = 0; k < overlap; k++) {
-                sum += *(*(M + i) + k) * *(*(N + k) + j);
+    /* The next two loops are used to iterate through each value of matrix A and compute the partial product using the values at the exact same positions in
+        matrices M and N
+    */
+    for (int i=0; i<partialRows; i++) {
+        for (int j=0; j<partialCols; j++) {
+            // This variable initializes the dot product result for the ith row of M and the jth column of N, which will iterate over the shared dimension
+            int dot = 0;
+
+            // This for loop iterates over the overlapping shared dimension between matrices M and N in order to compute the dot product
+            for (int k=0; k<overlap; k++) {
+                dot += *(*(M+i)+k) * *(*(N+k)+j);
             }
-            *(*(A + i) + j) = sum;
+
+            // Stores the dot product in the designated spot in matrix A
+            *(*(A+i)+j) = dot;
         }
     }
 
-    return -2; // Partial intersection product stored
+    // Indicates that the partial product matrix obtained by performing matrix multiplication on the maximum shared dimension has been stored
+    return -2;
 }
 
 
 int Transpose(int RA, int RC, int RAT, int CAT, int** A, int** AT) {
-    if (A == NULL || AT == NULL) { // Check for null pointers
-        return -1;
+    /* Edge case where the matrix pointers are NULL. If any one of the matrix pointer are NULL, the matrix does not exist, and therefore, we cannot find the
+       transpose of the matrix. Therefore, I created a new return value to indicate that the matrix itself is invalid to separate all edge cases and to
+       make debugging easier. Check README.md file for more information
+    */
+    if (A == NULL || AT == NULL) {
+        return -2;
     }
 
-    if (RA <= 0 || RC <= 0 || RAT <= 0 || CAT <= 0) { // Check for invalid dimensions
-        return -1;
+    /* Edge case where the matrix dimensions are invalid. If the matrix dimension arguments are negative, then the matrix practically cannot exist. This means
+       that the transpose of the matrix cannot be calculated. Therefore, I used the same return value for the NULL matrix pointers to indicate that the matrix 
+       itself is invalid to seperate all edge cases and to make debugging easier. Check README.md file for more information
+    */
+    if (RA <= 0 || RC <= 0 || RAT <= 0 || CAT <= 0) { 
+        return -2;
     }
 
-    for (int i = 0; i < RA; i++) { // Validate rows of A
-        if (*(A + i) == NULL) {
-            return -1;
+    /* Edge case to see if the matrix rows are allocated properly. This conditional checks if memory for the rows of matrix A is allocated properly, and if not, 
+       the return value is -2. This indicates a structural error, and will return the custom error that I've assigned for structural errors in the matrices. 
+       This custom error seperates all edge cases and makes debugging easier. Check README.MD file for more information. This loop iterates through each of the
+       rows in matrix A
+    */
+    for (int i=0; i<RA; i++) {
+        // Conditional to check if the memory of the current row of matrix A is NULL or not
+        if (*(A+i) == NULL) {
+            // Indicates that there is a strcutural error with matrix A
+            return -2;
         }
     }
 
-    for (int i = 0; i < RAT; i++) { // Validate rows of AT
-        if (*(AT + i) == NULL) {
-            return -1;
+    /* Edge case to see if the matrix rows are allocated properly. This conditional checks if memory for the rows of matrix AT is allocated properly, and if not, 
+       the return value is -2. This indicates a structural error, and will return the custom error that I've assigned for structural errors in the matrices. 
+       This custom error seperates all edge cases and makes debugging easier. Check README.MD file for more information. This loop iterates through each of the
+       rows in matrix AT
+    */
+    for (int i=0; i<RAT; i++) {
+        // Conditional to check if the memory of the current row of matrix AT is NULL or not
+        if (*(AT+i) == NULL) {
+            // Indicates that there is a strcutural error with matrix A
+            return -2;
         }
     }
 
-    for (int i = 0; i < RAT; i++) { // Zero out AT
-        for (int j = 0; j < CAT; j++) {
-            *(*(AT + i) + j) = 0;
+    /* This portion of the code iterates through each of the elements in matrix AT and zeros out all the values of AT so that all the garbage values of matrix AT 
+       are defined. This loop iterates through the rows of matrix AT
+    */
+    for (int i=0; i<RAT; i++) {
+        // This loop iterates through the columns of matrix AT 
+        for (int j=0; j<CAT; j++) {
+            // Zeros out all the values of matrix A
+            *(*(AT+i)+j) = 0;
         }
     }
 
-    if (RAT > RC && CAT > RA) { // Oversized transpose
-        for (int i = 0; i < RA; i++) {
-            for (int j = 0; j < RC; j++) {
-                *(*(AT + j) + i) = *(*(A + i) + j);
+    /* This portion of the code tests the first case: matrix AT is larger than matrix A. This means that the transpose will be successfully calculated, and the
+       transpose matrix will have unused values. The conditional checks if matrix AT is larger than matrix A
+    */
+    if (RAT > RC && CAT > RA) {
+        /* The following two loop iterate through every element in matrix A so that it can be stored in its designated spot in the transpose matrix, that is, the
+           ith row is now the ith column and the jth column is now the jth row
+        */
+        for (int i=0; i<RA; i++) {
+            for (int j=0; j<RC; j++) {
+                // Stores the element in the designated spot in matrix AT, the transpose matrix
+                *(*(AT+j)+i) = *(*(A+i)+j);
             }
         }
+
+        // Indicates that the full transpose matrix has been calculated, with unused values
         return 2;
     }
 
-    if (RAT == RC && CAT == RA) { // Exact-fit transpose
-        for (int i = 0; i < RA; i++) {
-            for (int j = 0; j < RC; j++) {
-                *(*(AT + j) + i) = *(*(A + i) + j);
+    /* This portion of the code tests the second case: matrix AT is the same size as matrix A. This means that the transpose will be successfully calculated, and
+       the transpose matrix will not have unused values. The conditional checks if matrix AT is the same size as matrix A
+    */
+    if (RAT == RC && CAT == RA) { 
+        /* The following two loop iterate through every element in matrix A so that it can be stored in its designated spot in the transpose matrix, that is, the
+           ith row is now the ith column and the jth column is now the jth row
+        */
+        for (int i=0; i<RA; i++) {
+            for (int j=0; j<RC; j++) {
+                // Stores the element in the designated spot in matrix AT, the transpose matrix
+                *(*(AT+j)+i) = *(*(A+i)+j);
             }
         }
+
+        // Indicates that the full transpose matrix has been calculated, without unused values
         return 1;
     }
 
-    for (int i = 0; i < RA; i++) { // Partial transpose
-        for (int j = 0; j < RC; j++) {
+    /* This portion of the code tests the third case: matrix AT is smaller than matrix A. This means that all the values in matrix A cannot be calculated in the
+       transpose matrix, which means that the function needs to store as many transpose values as it safely can. The loop iterates through every element in matrix
+       A
+    */
+    for (int i=0; i<RA; i++) { 
+        for (int j=0; j<RC; j++) {
+            /* This conditional checks if the current matrix dimension of matrix A is less than the matrix dimensions of matrix AT. If the current matrix 
+               dimension of matrix A is less than the matrix dimensions of matrix AT, then the value can still fit inside the smaller transpose matrix
+            */
             if (j < RAT && i < CAT) {
-                *(*(AT + j) + i) = *(*(A + i) + j);
+                // Stores the element in the designated spot in matrix AT, the transpose matrix
+                *(*(AT+j)+i) = *(*(A+i)+j);
             }
         }
     }
 
-    return -1; // Partial transpose stored
+    // Indicates that the partial transpose matrix has been calculated.
+    return -1; 
 }
 
 
@@ -593,7 +671,7 @@ void freeMatrix(int n, int** M){
 #ifndef STUDENT_MAIN /* Do not remove this line*/
 int main(int argc, char* argv[]){
     (void)argc;
-	(void)argv;
+    (void)argv;
 
     return 0;
 }
