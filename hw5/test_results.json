@@ -1,0 +1,279 @@
+{
+  "id": "Criterion v2.4.1",
+  "passed": 47,
+  "failed": 3,
+  "errored": 0,
+  "skipped": 0,
+  "test_suites": [
+    {
+      "name": "base_suite",
+      "passed": 47,
+      "failed": 3,
+      "errored": 0,
+      "skipped": 0,
+      "tests": [
+        {
+          "name": "transpose_oversize_case",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "transpose_null_row_check",
+          "assertions": 2,
+          "status": "FAILED",
+          "messages": [
+            "tests/student_tests.c:585: Expected -2 when a row in AT is NULL, got -1.",
+            "tests/student_tests.c:576: Expected -2 when a row in A is NULL, got -1."
+          ]
+        },
+        {
+          "name": "transpose_null_matrix_check",
+          "assertions": 2,
+          "status": "FAILED",
+          "messages": [
+            "tests/student_tests.c:564: Expected -2 when AT is NULL, got -1.",
+            "tests/student_tests.c:558: Expected -2 when A is NULL, got -1."
+          ]
+        },
+        {
+          "name": "transpose_invalid_dimensions",
+          "assertions": 1,
+          "status": "FAILED",
+          "messages": [
+            "tests/student_tests.c:596: Expected -2 for any invalid dimension, got -1."
+          ]
+        },
+        {
+          "name": "transpose_generic_case",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "transpose_case_yes",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "transpose_case_partial",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "transpose_case_oversized",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "transpose_case_no_big",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "transpose_case_no",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "transpose_case_exact_fit",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "sparsematrix_null_row_check",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "sparsematrix_null_matrix_check",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "sparse_invalid_dimensions",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "multiplication_prioritize_structural_error",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "multiplication_null_row_check",
+          "assertions": 3,
+          "status": "PASSED"
+        },
+        {
+          "name": "multiplication_null_matrix_check",
+          "assertions": 3,
+          "status": "PASSED"
+        },
+        {
+          "name": "multiplication_invalid_dimensions",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "multiplication_case_yes_incorrect",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "multiplication_case_yes_big",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "multiplication_case_yes",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "multiplication_case_partial_fit",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "multiplication_case_oversized_A",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "multiplication_case_overlap_partial",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "multiplication_case_overlap_fullfit",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "multiplication_case_no_small",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "multiplication_case_no_big",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "multiplication_case_exact_fit",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "multiplication_A_not_zeroed",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "addition_structural_priority",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "addition_partial_same_size",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "addition_partial_overlap",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "addition_oversized_A",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "addition_null_row_check",
+          "assertions": 3,
+          "status": "PASSED"
+        },
+        {
+          "name": "addition_null_matrix_check",
+          "assertions": 3,
+          "status": "PASSED"
+        },
+        {
+          "name": "addition_invalid_dimensions",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "addition_full_overlap",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "addition_exact_fit",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "addition_case_yes_small",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "addition_case_yes",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "addition_case_no_small",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "addition_case_no_big",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "addition_case_no",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "addition_A_not_zeroed",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "SparseMatrix_prioritize_structural_error",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "SparseMatrix_not_sparse",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "SparseMatrix_max_equal",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "SparseMatrix_generic",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "SparseMatrix_full",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "SparseMatrix_all_zeros",
+          "assertions": 2,
+          "status": "PASSED"
+        }
+      ]
+    }
+  ]
+}

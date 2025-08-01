@@ -1,3 +1,8 @@
+/* Siddharth Korukonda
+   CSE 220.01
+   115607752
+*/
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
