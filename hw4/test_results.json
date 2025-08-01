@@ -118,11 +118,6 @@
           "status": "PASSED"
         },
         {
-          "name": "decrypt_no_eom",
-          "assertions": 1,
-          "status": "PASSED"
-        },
-        {
           "name": "decrypt_negative_key",
           "assertions": 2,
           "status": "PASSED"
@@ -134,6 +129,11 @@
         },
         {
           "name": "decrypt_incomplete_eom_and_zero_plaintext",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_incomplete_eom",
           "assertions": 1,
           "status": "PASSED"
         },
