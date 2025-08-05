@@ -1,6 +1,6 @@
 After AT&T had dropped out of the Multics project, the Unix operating system was 
 conceived and implemented by Ken Thompson and Dennis Ritchie (both of AT&T Bell
-Laboratories) in 1969 and first released in 1970. Later they rewrote it in a new
+Laboratories) in 1969 and first released in 1970. Later, rewrote it in a new
 programming language, C, to make it portable. The availability and portability 
 of Unix caused it to be widely adopted, copied and modified by academic 
 institutions and businesses.
