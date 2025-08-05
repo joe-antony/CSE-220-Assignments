@@ -1,0 +1,168 @@
+{
+  "id": "Criterion v2.4.1",
+  "passed": 30,
+  "failed": 0,
+  "errored": 0,
+  "skipped": 0,
+  "test_suites": [
+    {
+      "name": "base_suite",
+      "passed": 30,
+      "failed": 0,
+      "errored": 0,
+      "skipped": 0,
+      "tests": [
+        {
+          "name": "encrypt_wrap_letters_positive",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "encrypt_wrap_letters_negative",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "encrypt_wrap_digits_positive",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "encrypt_wrap_digits_negative",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "encrypt_with_nonalphanumeric_characters",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "encrypt_with_key_zero",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "encrypt_null_plaintext",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "encrypt_null_ciphertext",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "encrypt_negative_key",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "encrypt_full_msg_numbers",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "encrypt_full_msg",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "encrypt_empty_plaintext",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "encrypt_ciphertext_buffer_too_short",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "encrypt_both_plaintext_and_ciphertext_null",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_wrap_letters_positive",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_wrap_letters_negative",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_wrap_digits_positive",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_wrap_digits_negative",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_with_nonalphanumeric_characters",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_null_plaintext",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_null_ciphertext",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_negative_key",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_key_zero",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_incomplete_eom_and_zero_plaintext",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_incomplete_eom",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_full_msg_numbers",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_full_msg",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_empty_ciphertext_with_eom",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_ciphertext_longer_than_plaintext",
+          "assertions": 2,
+          "status": "PASSED"
+        },
+        {
+          "name": "decrypt_both_plaintext_and_ciphertext_null",
+          "assertions": 1,
+          "status": "PASSED"
+        }
+      ]
+    }
+  ]
+}
