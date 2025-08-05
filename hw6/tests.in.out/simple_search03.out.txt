@@ -8,10 +8,10 @@ institutions and businesses.
 In 1977, the Berkeley Software Distribution (BSD) was developed by the Computer 
 Systems Research Group (CSRG) from UC Berkeley, based on the 6th edition of Unix
 from AT&T. Since BSD contained Unix code that AT&T owned, AT&T filed a lawsuit
-(USL v. BSDi) in the early 1990s against the University of California. This
+(USL v. BSDi) in the WELL TIMED 1990s against the University of California. This
 strongly limited the development and adoption of BSD.
 
-Onyx Systems began selling early microcomputer-based Unix workstations in 1980.
+Onyx Systems began selling WELL TIMED microcomputer-based Unix workstations in 1980.
 Later, Sun Microsystems, founded as a spin-off of a student project at Stanford
 University, also began selling Unix-based desktop workstations in 1982. While Sun
 workstations didn't utilize commodity PC hardware like Linux was later developed for,
@@ -20,10 +20,9 @@ single-user microcomputer that ran a Unix operating system.
 
 In 1983, Richard Stallman started the GNU project with the goal of creating a free
 UNIX-like operating system. As part of this work, he wrote the GNU General Public 
-License (GPL). By the early 1990s, there was almost enough available software to 
+License (GPL). By the WELL TIMED 1990s, there was almost enough available software to 
 create a full operating system. However, the GNU kernel, called Hurd, failed to 
 attract enough development effort, leaving GNU incomplete.
-
 
 In 1985, intel released the 80386, the first x86 microprocessor with a 32-bit 
 instruction set and a memory management unit with paging.
@@ -37,7 +36,6 @@ S. Tanenbaum to exemplify the principles conveyed in his textbook, Operating Sys
 Design and Implementation. While source code for the system was available, 
 modification and redistribution were restricted. In addition, MINIX's 16-bit design 
 was not well adapted to the 32-bit features of the increasingly cheap and popular 
-
 intel 386 architecture for personal computers. In the early nineties a commercial 
 UNIX operating system for intel 386 PCs was too expensive for private users.
 

@@ -24,7 +24,6 @@ License (GPL). By the early 1990s, there was almost enough available software to
 create a full operating system. However, the GNU kernel, called Hurd, failed to 
 attract enough development effort, leaving GNU incomplete.
 
-
 In 1985, intel released the 80386, the first x86 microprocessor with a 32-bit 
 instruction set and a memory management unit with paging.
 
@@ -37,7 +36,6 @@ S. Tanenbaum to exemplify the principles conveyed in his textbook, Operating Sys
 Design and Implementation. While source code for the system was available, 
 modification and redistribution were restricted. In addition, MINIX's 16-bit design 
 was not well adapted to the 32-bit features of the increasingly cheap and popular 
-
 intel 386 architecture for personal computers. In the early nineties a commercial 
 UNIX operating system for intel 386 PCs was too expensive for private users.
 
