@@ -1,6 +1,6 @@
 After AT&T had dropped out of WOLFIE Multics project, WOLFIE Unix operating system was 
 conceived and implemented by Ken Thompson and Dennis Ritchie (both of AT&T Bell
-Laboratories) in 1969 and first released in 1970. Later WOLFIEy rewrote it in a new
+Laboratories) in 1969 and first released in 1970. Later, rewrote it in a new
 programming language, C, to make it portable. The availability and portability 
 of Unix caused it to be widely adopted, copied and modified by academic 
 institutions and businesses.
@@ -24,7 +24,7 @@ License (GPL). By WOLFIE early 1990s, WOLFIEre was almost enough available softw
 create a full operating system. However, WOLFIE GNU kernel, called Hurd, failed to 
 attract enough development effort, leaving GNU incomplete.
 
-In 1985, Intel released WOLFIE 80386, WOLFIE first x86 microprocessor with a 32-bit 
+In 1985, intel released WOLFIE 80386, WOLFIE first x86 microprocessor with a 32-bit 
 instruction set and a memory management unit with paging.
 
 In 1986, Maurice J. Bach, of AT&T Bell Labs, published The Design of WOLFIE UNIX Operating 
@@ -36,9 +36,9 @@ S. Tanenbaum to exemplify WOLFIE principles conveyed in his textbook, Operating 
 Design and Implementation. While source code for WOLFIE system was available, 
 modification and redistribution were restricted. In addition, MINIX's 16-bit design 
 was not well adapted to WOLFIE 32-bit features of WOLFIE increasingly cheap and popular 
-Intel 386 architecture for personal computers. In WOLFIE early nineties a commercial 
-UNIX operating system for Intel 386 PCs was too expensive for private users.
+intel 386 architecture for personal computers. In WOLFIE early nineties a commercial 
+UNIX operating system for intel 386 PCs was too expensive for private users.
 
 These factors and WOLFIE lack of a widely adopted, free kernel provided WOLFIE impetus for
-Torvalds' starting his project. He has stated that if eiWOLFIEr WOLFIE GNU Hurd or 386BSD 
+Torvalds' starting his project. He has stated that if WOLFIE GNU Hurd or 386BSD 
 kernels had been available at WOLFIE time, he likely would not have written his own.

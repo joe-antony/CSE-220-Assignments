@@ -24,7 +24,7 @@ License (GPL). By the early 1990s, there was almost enough available software to
 create a full operating system. However, the GNU kernel, called Hurd, failed to 
 attract enough development effort, leaving GNU incomplete.
 
-During 1985, Duringtel released the 80386, the first x86 microprocessor with a 32-bit 
+During 1985, intel released the 80386, the first x86 microprocessor with a 32-bit 
 instruction set and a memory management unit with paging.
 
 During 1986, Maurice J. Bach, of AT&T Bell Labs, published The Design of the UNIX Operating 
@@ -36,9 +36,9 @@ S. Tanenbaum to exemplify the principles conveyed in his textbook, Operating Sys
 Design and Implementation. While source code for the system was available, 
 modification and redistribution were restricted. During addition, MINIX's 16-bit design 
 was not well adapted to the 32-bit features of the increasingly cheap and popular 
-Duringtel 386 architecture for personal computers. During the early nineties a commercial 
-UNIX operating system for Duringtel 386 PCs was too expensive for private users.
+intel 386 architecture for personal computers. During the early nineties a commercial 
+UNIX operating system for intel 386 PCs was too expensive for private users.
 
 These factors and the lack of a widely adopted, free kernel provided the impetus for
-Torvalds' starting his project. He has stated that if either the GNU Hurd or 386BSD 
+Torvalds' starting his project. He has stated that if the GNU Hurd or 386BSD 
 kernels had been available at the time, he likely would not have written his own.
