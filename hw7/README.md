@@ -16,3 +16,13 @@ NOTE: All test cases are tested using Criterion. There is no main.c file. To tes
 3. The submitted code shouldn't produce any errors or warning messages.
 
 4. Write brief comments in the source file to explain your thinking and work. AI generated comments or content will lead to severe penalty. You may use AI to aid your learning.
+
+# Submission folder structure:
+
+
+CSE220_{SBU ID#}_HW7-----
+|
+|_____ hw7.c
+|_____ student_tests.c
+|
+|______README.md
