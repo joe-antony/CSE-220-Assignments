@@ -29,7 +29,7 @@ CFLAGS := -Wall -Wextra -Wshadow -Wdouble-promotion -Wformat=2 -Wundef -pedantic
 DFLAGS := -g -DDEBUG
 PRINT_STATEMENTS := -DERROR -DSUCCESS -DWARN -DINFO
 
-STD := -std=gnu11
+STD := -std=c99
 TEST_LIB := -lcriterion
 LIBS := -lm
 
@@ -50,7 +50,7 @@ setup:
 	@mkdir -p $(BLDD)
 	
 $(BIND)/$(TEST): $(ALL_OBJF) $(TEST_OBJ) 
-	$(CC) $(ALL_OBJF) $(TEST_OBJ) $(INCD) $(TEST_LIB) $(LIBD) -o $@ $(LIBS)
+	$(CC) $(DFLAGS) $(ALL_OBJF) $(TEST_OBJ) $(INCD) $(TEST_LIB) $(LIBD) -o $@ $(LIBS)
 
 $(AUX_PGMS): % : $(AUX_OBJS) $(ALL_OBJF) 
 	$(CC) $(BLDD)/$(@F).o $(ALL_OBJF) -o $@ $(LIBS)
