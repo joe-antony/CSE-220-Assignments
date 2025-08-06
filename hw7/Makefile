@@ -50,7 +50,7 @@ setup:
 	@mkdir -p $(BLDD)
 	
 $(BIND)/$(TEST): $(ALL_OBJF) $(TEST_OBJ) 
-	$(CC) $(DFLAGS) $(ALL_OBJF) $(TEST_OBJ) $(INCD) $(TEST_LIB) $(LIBD) -o $@ $(LIBS)
+	$(CC) $(ALL_OBJF) $(TEST_OBJ) $(INCD) $(TEST_LIB) $(LIBD) -o $@ $(LIBS)
 
 $(AUX_PGMS): % : $(AUX_OBJS) $(ALL_OBJF) 
 	$(CC) $(BLDD)/$(@F).o $(ALL_OBJF) -o $@ $(LIBS)
