@@ -1,0 +1,13 @@
+==49605== Memcheck, a memory error detector
+==49605== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==49605== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==49605== Command: ./bin/hw6 -s early -r WELL\ TIMED -l 11,23 tests.in/simple_search03.in.txt tests.out/simple_search03.out.txt
+==49605== 
+==49605== 
+==49605== HEAP SUMMARY:
+==49605==     in use at exit: 0 bytes in 0 blocks
+==49605==   total heap usage: 6 allocs, 6 frees, 9,328 bytes allocated
+==49605== 
+==49605== All heap blocks were freed -- no leaks are possible
+==49605== 
+==49605== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

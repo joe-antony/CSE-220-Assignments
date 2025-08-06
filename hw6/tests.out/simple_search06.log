@@ -1,0 +1,13 @@
+==49637== Memcheck, a memory error detector
+==49637== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==49637== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==49637== Command: ./bin/hw6 -s Turing -r TURING\ THE\ GREAT tests.in/simple_search06.in.txt tests.out/simple_search06.out.txt
+==49637== 
+==49637== 
+==49637== HEAP SUMMARY:
+==49637==     in use at exit: 0 bytes in 0 blocks
+==49637==   total heap usage: 6 allocs, 6 frees, 9,328 bytes allocated
+==49637== 
+==49637== All heap blocks were freed -- no leaks are possible
+==49637== 
+==49637== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

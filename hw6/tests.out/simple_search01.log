@@ -1,0 +1,13 @@
+==49572== Memcheck, a memory error detector
+==49572== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==49572== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==49572== Command: ./bin/hw6 -s the -r WOLFIE tests.in/simple_search01.in.txt tests.out/simple_search01.out.txt
+==49572== 
+==49572== 
+==49572== HEAP SUMMARY:
+==49572==     in use at exit: 0 bytes in 0 blocks
+==49572==   total heap usage: 6 allocs, 6 frees, 9,328 bytes allocated
+==49572== 
+==49572== All heap blocks were freed -- no leaks are possible
+==49572== 
+==49572== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

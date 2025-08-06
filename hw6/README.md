@@ -1,6 +1,6 @@
 # CSE-220-Homework6
-Name: 
-ID: ##########
+Name: Siddharth Korukonda
+ID: 218869220
 
 # Submission folder structure:
 
@@ -11,6 +11,7 @@ CSE220_{SBU ID#}_HW6
 
 ## Functions:
 1. int main(int argc, char *argv[])
+    - The error codes are in the order of precedence that was given in the homework file
 
 
 # Guidelines:
